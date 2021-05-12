@@ -1,15 +1,20 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { MainPage } from './pages/MainPage'
-import { OrdersListPage } from './pages/OrdersListPage'
+import { MainPage, OrdersListPage, OrdersDetailsPage } from './pages'
 
 function App() {
     return (
         <Router>
-            <Switch>
-                <Route path='/' component={MainPage} exact />
-                <Route path='/search/:email' component={OrdersListPage} />
-            </Switch>
+            <div className='row'>
+                <div className = 'col-xs-12'>
+                    <Switch>
+                        <Route path='/' component={MainPage} exact />
+                        <Route path='/search' component={OrdersListPage} />
+                        <Route path='/order-details/:id' component={OrdersDetailsPage} />
+
+                    </Switch>
+                </div>
+            </div>
         </Router>
     )
 }

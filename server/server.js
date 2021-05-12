@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 
-const checkpointsRouter = require('./routes/checkpoints-router')
 const trakingsRouter = require('./routes/trackings-router')
 
 const app = express()
@@ -9,7 +8,7 @@ const apiPort = 3000
 
 app.use(cors())
 
-app.use('/api', checkpointsRouter, trakingsRouter)
+app.use('/api', trakingsRouter)
 
 // Implement 500 error route
 app.use(function (err, req, res, next) {

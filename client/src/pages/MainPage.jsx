@@ -1,26 +1,42 @@
 import React, { useState} from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { StyledWrapper, LinkComponent } from '../components'
+
+const StyledFormCard = styled(StyledWrapper)`
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0px 10px 25px 5px grey;
+`;
+StyledFormCard.displayName = 'StyledFormCard'
 
 export const MainPage = (props) => {
-    const [value, setState] = useState('')
+    const [email, setEmailValue] = useState('')
     
     const handleChange = (ev) => {
-        setState(ev.target.value);
-    
+        setEmailValue(ev.target.value)
+    }
+
+    const isValidEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        return re.test(String(email).toLowerCase())
     }
 
     return (
-        <form className='form-inline'>
-            <div className="form-group">
-                <input type="text" value={value} onChange={handleChange} className="form-control" name="keyword" placeholder="Image keyword" />
-                <Link to={{pathname: `/search/${value}`, state: { value } }} >
-                    <button className="btn btn-primary">Search</button>
-                </Link>
+        <StyledFormCard>
+            <div className='card-body'>
+                <p className='card-text'>Please enter your email address to see your recent orders.</p>
+                <label htmlFor='email' className='small'>Email</label>
+                <input type='email' value={email} onChange={handleChange} className='form-control' name='email' placeholder='Type your email address' />
+                {email !== '' && !isValidEmail(email) && <span className='small text-danger'>Please enter a valid email address</span>}
+                <LinkComponent 
+                    path='/search'
+                    text='send'
+                    state={{ email }}
+                    disabled={!isValidEmail(email)}
+                />
             </div>
-        </form>
+        </StyledFormCard>
     )
-
 }
 
 export default MainPage
