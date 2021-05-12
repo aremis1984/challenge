@@ -9,7 +9,7 @@ export const getTrackings = async () => {
 }
 
 export const getTrackingsByEmail = async (email) => {
-    return await api.get(`/trackings/${email}`).then(response => response.data)
+    return await api.get(`/user-trackings/${email}`).then(response => response.data)
 }
 
 export const getCheckpoints = async () => {
@@ -17,7 +17,7 @@ export const getCheckpoints = async () => {
 }
 
 export const getCheckpointsByTracking = async (tracking) => {
-    return await api.get(`/checkpoints/${tracking}`).then(response => response.data)
+    return await api.get(`/checkpoints-tracking/${tracking}`).then(response => response.data)
 }
 
 const apis = {

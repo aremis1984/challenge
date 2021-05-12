@@ -14,9 +14,22 @@ exports.getCheckpoints = async (req, res) => {
 exports.getCheckpointsByTracking = async (req, res) => {
     try {
         const data = csvToJson.getJsonFromCsv(__dirname + '/../data/checkpoints.csv')
-        const results = data.find(point => point.tracking_number === req.params.tracking)
+        const tracking = req.params.tracking
+
+        if (!tracking) {
+            return res.status(400).json({
+                success: false,
+                error: 'You must provide a valid tracking number',
+            })
+        }
+        const results = data.filter(point => point.tracking_number === tracking)
         console.log(results)
-        res.status(200).send(results)
+        if(results !== '') {
+            return res.status(200).send(results)
+        } else {
+            return res.status(400).json({ not_found: true })
+        }
+
     } catch (error) {
         console.log('error:', error.message)
         res.status(500).send(error.message)

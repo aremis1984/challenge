@@ -17,10 +17,8 @@ app.use(function (err, req, res, next) {
     res.status(500).send('Something is broken.' + err.stack)
 })
 
-// Implement 404 error route
 app.use(function (req, res, next) {
-    res.json({notFound: true, message: 'Sorry we could not find that.'})
-    res.status(404).send(res)
+    res.status(404).send('Sorry we could not find that.')
 })
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
