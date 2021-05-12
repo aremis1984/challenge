@@ -14,7 +14,7 @@ export const MainPage = (props) => {
         <form className='form-inline'>
             <div className="form-group">
                 <input type="text" value={value} onChange={handleChange} className="form-control" name="keyword" placeholder="Image keyword" />
-                <Link to={{pathname: '/search', state: { value } }} >
+                <Link to={{pathname: `/search/${value}`, state: { value } }} >
                     <button className="btn btn-primary">Search</button>
                 </Link>
             </div>

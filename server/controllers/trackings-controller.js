@@ -24,7 +24,7 @@ exports.getTrackingsByEmail = async (req, res) => {
         }
         const results = data.filter(tracking => tracking.email === email)
         console.log(results)
-        if(results !== '') {
+        if(results.length > 0) {
             return res.status(200).send(results)
         } else {
             return res.status(400).json({ not_found: true })

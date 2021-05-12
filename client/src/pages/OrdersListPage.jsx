@@ -11,7 +11,7 @@ export const OrdersListPage = (props) => {
         async function getTracking() {
             const email = history.location.state.value
             try {
-                const trackings = await api.getTrackingsByEmail({ email })
+                const trackings = await api.getTrackingsByEmail(email)
                 console.log(trackings);
                 setTrackings(trackings);
             } catch (err) {
