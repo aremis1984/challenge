@@ -10,11 +10,17 @@ beforeEach(() => {
     cy.get('input[name=email]').should('be.visible')
       .get('input[name=email]').type('test@test.de')
       .get('button').click()
-
+    cy.intercept(
+        {
+          method: 'GET', // Route all GET requests
+          url: '/user-trackings/*', // that have a URL that matches '/users/*'
+        },
+        [] // and force the response to be: []
+      )
     cy.url().should('include', '/order-history')
       .get('h4').contains('No orders were found')
       .get('.text-info').contains('test@test.de')
-      .wait(2000)
+      .wait(1000)
       .get('button').contains('back').click()
   });
 
@@ -22,6 +28,8 @@ beforeEach(() => {
     cy.get('input[name=email]').should('be.visible')
       .get('input[name=email]').type('julian@parcellab.com')
       .get('button').click()
+
+    cy.intercept('GET', '/user-trackings/*', { fixture: 'response.json' })
 
     cy.url().should('include', '/order-history')
       .get('h1').contains('Your Orders')

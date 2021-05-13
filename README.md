@@ -28,7 +28,10 @@ Inside the project there are the following folders:
   In the BE inside this request both files are read, the data is filtered and the common data between both files, joined in just one JSON array that will be sent to the FE.
 
   ## Running tests
+  # Integration tests
   The tests are done with Cypress.
   In order to run the integration tests execute "npm test" a browser window will be openned.
   You will se a lists of tests, on the right side you will see "Run X integration specs", click here in order to run everything.
   Test can also be run individually by clicking on it inside the list 
+  # Unit tests
+  In order to execute unit tests please use this command "npm run unit" insidde client folder
