@@ -29,7 +29,7 @@ export const MainPage = (props) => {
                 <input type='email' value={email} onChange={handleChange} className='form-control' name='email' placeholder='Type your email address' />
                 {email !== '' && !isValidEmail(email) && <span className='small text-danger'>Please enter a valid email address</span>}
                 <LinkComponent 
-                    path='/search'
+                    path='/order-history'
                     text='send'
                     state={{ email }}
                     disabled={!isValidEmail(email)}

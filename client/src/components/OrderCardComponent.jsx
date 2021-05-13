@@ -1,15 +1,11 @@
 import React from 'react'
+import { StyledCard } from '../components'
 import styled from 'styled-components'
 
-const StyledCard = styled.div`
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0px 10px 25px 5px grey;
-    margin: 40px auto;
-    max-width: 500px;
+const StyledAddress = styled.div`
+    display: grid;
 `;
-StyledCard.displayName = 'StyledCard'
-
+StyledAddress.displayName = StyledAddress
 
 export const OrderCardComponent = (props) => {
     const { order, orderIndex, history } = props
@@ -34,13 +30,12 @@ export const OrderCardComponent = (props) => {
                 </div>
                 <div className='col-md-6 col-xs-12'>
                     <span className='small fw-light'>Delivery Address</span>
-                    <div>
+                    <StyledAddress>
                         <span className='fw-bold'>{order.street}</span>
                         <span className='fw-bold'>
-                            {order.zip_code} {order.city}
+                            {order.zip_code}, {order.city}
                         </span>
-                        <span className='fw-bold'>{order.city}</span>
-                    </div>
+                    </StyledAddress>
                 </div>
             </div>
         </StyledCard>

@@ -1,5 +1,5 @@
-import { StyledWrapper } from './StyledWrapper'
+import { StyledWrapper, StyledCard, OrdersWrapper } from './StyledWrappers'
 import { LinkComponent } from './LinkComponent'
 import { OrderCardComponent } from './OrderCardComponent'
 
-export { StyledWrapper, LinkComponent, OrderCardComponent }
+export { StyledWrapper, LinkComponent, OrderCardComponent, StyledCard, OrdersWrapper }

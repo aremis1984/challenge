@@ -9,7 +9,7 @@ function App() {
                 <div className = 'col-xs-12'>
                     <Switch>
                         <Route path='/' component={MainPage} exact />
-                        <Route path='/search' component={OrdersListPage} />
+                        <Route path='/order-history' component={OrdersListPage} />
                         <Route path='/order-details' component={OrdersDetailsPage} />
 
                     </Switch>
