@@ -23,10 +23,12 @@ Inside the project there are the following folders:
   3. Start the BE server by the command "node server.js"
   4. Start the FE server by "npm start"
   
-  IMPORTANT: the FE server has the port 8000 defined in the file package.json inside the client folder, but that command works only in Mac.
-  If your are running the app on windows, replace what is in "start" with "set PORT=8000 && react-scripts start"
-  * Another option is to start the BE server first, then the FE, it will show a message telling that the port 3000 is already in use, asking you to choose another port, choose yes 'Y'
-  
   ## API
   Despite of there are two CSV files, the FE is doing only one request, in order to search the elements by the user email.
   In the BE inside this request both files are read, the data is filtered and the common data between both files, joined in just one JSON array that will be sent to the FE.
+
+  ## Running tests
+  The tests are done with Cypress.
+  In order to run the integration tests execute "npm test" a browser window will be openned.
+  You will se a lists of tests, on the right side you will see "Run X integration specs", click here in order to run everything.
+  Test can also be run individually by clicking on it inside the list 

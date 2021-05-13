@@ -5,7 +5,6 @@ import styled from 'styled-components'
 const StyledAddress = styled.div`
     display: grid;
 `;
-StyledAddress.displayName = StyledAddress
 
 export const OrderCardComponent = (props) => {
     const { order, orderIndex, history } = props
@@ -20,7 +19,7 @@ export const OrderCardComponent = (props) => {
     const { order_details } = order
 
     return (
-        <StyledCard onClick={() => handleClick(orderIndex)}>
+        <StyledCard className='order-card' onClick={() => handleClick(orderIndex)}>
             <div className='card-body row'>
                 <div className='col-md-6 col-xs-12'>
                     <span className='small fw-light'>Order Number</span>

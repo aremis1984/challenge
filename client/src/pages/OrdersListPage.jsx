@@ -1,17 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import * as api from '../api'
-import styled from 'styled-components'
 import { LinkComponent, OrderCardComponent } from '../components'
 import { OrdersWrapper }from '../styles/StyledWrappers'
 
 import {NotificationContainer, NotificationManager} from 'react-notifications'
-//import 'react-notifications/lib/notifications.css'
-
-const StyledImg = styled.img`
-    margin: 50px auto;
-    display: block;
-`;
-StyledImg.displayName = 'StyledImg'
+import 'react-notifications/lib/notifications.css'
 
 export const OrdersListPage = (props) => {
     const { history } = props

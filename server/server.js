@@ -4,7 +4,7 @@ const cors = require('cors')
 const trakingsRouter = require('./routes/trackings-router')
 
 const app = express()
-const apiPort = 3000
+const apiPort = 8080
 
 app.use(cors())
 

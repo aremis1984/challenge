@@ -31,7 +31,7 @@ export const OrdersDetailsPage = (props) => {
 
     return (
         <OrdersWrapper>
-            <StyledOrderData>
+            <StyledOrderData data-test='order-data'>
                 <span className='small fw-light'>Order Number</span>
                 <p className='fw-bold'>{order.orderNo}</p>
                 <span className='small fw-light'>Delivery Address</span>
@@ -40,7 +40,7 @@ export const OrdersDetailsPage = (props) => {
                     {order.zip_code}, {order.city}
                 </span>
             </StyledOrderData>
-            <StyledCard>
+            <StyledCard data-test='order-card'>
                 <span className='small fw-light'>Tracking Number</span>
                 <p className='fw-bold'>{order.tracking_number}</p>
                 <span className='small fw-light'>Current Status</span>
@@ -48,11 +48,11 @@ export const OrdersDetailsPage = (props) => {
                 <span className='small fw-light'>{order_details[order_details.length-1].status_details}</span>
             </StyledCard>
             {article_list.length > 0 &&
-                <StyledCard>
+                <StyledCard data-test='articles-card'>
                     <span className='small fw-light'>Articles</span>
                     {article_list.map((article, i) => {
                         return (
-                        <StyledDetails key={i} className='row'>
+                        <StyledDetails key={i} className='row' data-test='article'>
                             <div className='col-xs-12 col-md-3'>
                                 <span className='fw-bold'>x{article.quantity}</span>
                                 <img src = {article.articleImageUrl} alt = '' />
