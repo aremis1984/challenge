@@ -1,0 +1,7 @@
+{
+    "baseUrl": "http://localhost:8000",
+    "env": {
+      "serverUrl": "http://localhost:5009"
+    },
+    "ignoreTestFiles": "*e2e*"
+  }

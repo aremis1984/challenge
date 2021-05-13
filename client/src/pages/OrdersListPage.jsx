@@ -3,7 +3,9 @@ import * as api from '../api'
 import styled from 'styled-components'
 import { LinkComponent, OrderCardComponent } from '../components'
 import { OrdersWrapper }from '../styles/StyledWrappers'
-import loading from '../assets/loading.gif'
+
+import {NotificationContainer, NotificationManager} from 'react-notifications'
+//import 'react-notifications/lib/notifications.css'
 
 const StyledImg = styled.img`
     margin: 50px auto;
@@ -16,17 +18,17 @@ export const OrdersListPage = (props) => {
     const email = history.location.state && history.location.state.email
     const [userOrders, setTrackings] = useState({
         trackings: [],
-        loading: true
+        hasError: false
     })
 
     useEffect (() => {
         async function getTracking() {
             try {
                 const trackings = await api.getTrackingsByEmail(email)
-                setTrackings({ trackings, loading: false })
+                setTrackings({ trackings })
             } catch (err) {
-                console.log('error: ' + err)
-                setTrackings({ trackings: [], loading: false })
+                NotificationManager.error('We could not get your orders, please try again.', 'Error', 5000)
+                setTrackings({ trackings: [], hasError: true })
             }
         }
         getTracking()
@@ -34,9 +36,9 @@ export const OrdersListPage = (props) => {
 
     return (
         <OrdersWrapper>
+            <NotificationContainer/>
             <h1>Your Orders</h1>
-            {userOrders.loading && <StyledImg src={loading} alt='loading' />}
-            {!userOrders.loading && userOrders.trackings.length > 0 &&
+            {!userOrders.hasError && userOrders.trackings.length > 0 &&
                 userOrders.trackings.map((order, index) => {
                     return (
                         <OrderCardComponent key={index} 
@@ -47,7 +49,7 @@ export const OrdersListPage = (props) => {
                     )
                 }) 
             }
-            {!userOrders.loading && userOrders.trackings.length === 0 &&
+            {userOrders.hasError &&
                 <React.Fragment>
                     <h4>No orders were found</h4>
                     <span>There any order in the system associated to the email address: </span>

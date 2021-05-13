@@ -9,7 +9,6 @@ Inside the project there are the following folders:
 
 * Client: Front-end code
   - Components: Reusable React components
-  - Assets: images
   - Styles: Common styles (styled componets)
   - api: services to get the BE requests
   - Pages: different main views
