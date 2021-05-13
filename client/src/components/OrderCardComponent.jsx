@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledCard } from '../components'
+import { StyledCard } from '../styles/StyledWrappers'
 import styled from 'styled-components'
 
 const StyledAddress = styled.div`
@@ -17,6 +17,8 @@ export const OrderCardComponent = (props) => {
        })
     }
 
+    const { order_details } = order
+
     return (
         <StyledCard onClick={() => handleClick(orderIndex)}>
             <div className='card-body row'>
@@ -26,7 +28,7 @@ export const OrderCardComponent = (props) => {
                 </div>
                 <div className='col-md-6 col-xs-12'>
                     <span className='small fw-light'>Current Status</span>
-                    <p className='fw-bold'>{order.status_details}</p>
+                    <p className='fw-bold'>{order_details[order_details.length-1].status_text}</p>
                 </div>
                 <div className='col-md-6 col-xs-12'>
                     <span className='small fw-light'>Delivery Address</span>

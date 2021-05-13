@@ -1,6 +1,7 @@
 import React, { useState} from 'react'
 import styled from 'styled-components'
-import { StyledWrapper, LinkComponent } from '../components'
+import { LinkComponent } from '../components'
+import { StyledWrapper }from '../styles/StyledWrappers'
 
 const StyledFormCard = styled(StyledWrapper)`
     border-radius: 20px;

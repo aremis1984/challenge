@@ -1,5 +1,6 @@
 import React from 'react'
-import { LinkComponent, OrdersWrapper, StyledCard } from '../components'
+import { LinkComponent } from '../components'
+import { OrdersWrapper, StyledCard }from '../styles/StyledWrappers'
 
 import styled from 'styled-components'
 
@@ -9,9 +10,24 @@ const StyledOrderData = styled.div`
 
 StyledOrderData.displayName = StyledOrderData
 
+const StyledDetails = styled.div`
+    display: flex;
+    span {
+        margin-right: 15px;
+    }
+    img {
+        width: 40px;
+    }
+`;
+
+StyledDetails.displayName = StyledDetails
+
+
 export const OrdersDetailsPage = (props) => {
     const { location } = props
     const order = location.state
+    const { order_details } = order
+    const { article_list } = order
 
     return (
         <OrdersWrapper>
@@ -28,16 +44,32 @@ export const OrdersDetailsPage = (props) => {
                 <span className='small fw-light'>Tracking Number</span>
                 <p className='fw-bold'>{order.tracking_number}</p>
                 <span className='small fw-light'>Current Status</span>
-                <span className='fw-bold'>{order.status_text}</span>
-                <span className='small fw-light'>{order.status_details}</span>
+                <span className='fw-bold'>{order_details[order_details.length-1].status_text}</span>
+                <span className='small fw-light'>{order_details[order_details.length-1].status_details}</span>
             </StyledCard>
-            <StyledCard>
-                <span className='small fw-light'>Articles</span>
-                <span className='fw-bold'>{order.quantity}</span>
-                <span className='small fw-light'>Current Status</span>
-                <span className='fw-bold'>{order.status_text}</span>
-                <span className='small fw-light'>{order.status_details}</span>
-            </StyledCard>
+            {article_list.length > 0 &&
+                <StyledCard>
+                    <span className='small fw-light'>Articles</span>
+                    {article_list.map((article, i) => {
+                        return (
+                        <StyledDetails key={i} className='row'>
+                            <div className='col-xs-12 col-md-3'>
+                                <span className='fw-bold'>x{article.quantity}</span>
+                                <img src = {article.articleImageUrl} alt = '' />
+                            </div>
+                            <div className='col-md-9 col-xs-12'>
+                                <span className='fw-bold'>{article.product_name}</span>
+                                <p className='small fw-light'>{article.articleNo}</p>
+                            </div>
+                        </StyledDetails>
+                        )
+                    })
+                    }
+                </StyledCard>
+            }
+            {article_list.length === 0 &&
+                <h3>We could not find the articles related to this order</h3>
+            }
             <LinkComponent 
                 path='/order-history'
                 text='back'
