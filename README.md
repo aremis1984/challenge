@@ -44,3 +44,7 @@ Inside the project there are the following folders:
   In order to execute unit tests please use this command "npm run unit" in the console, inside client folder.
   If this message is displayed "No tests found related to files changed since last commit. Press `a` to run all tests, or run Jest with `--watchAll`.", please press "a" in oder to run all the unit test.
 
+  # How to display order data
+  Please in order to see the orders list, in the email form which is displayed in / enter julian@parcellab.com, then click on the item cards to see the details. 
+  To display the error page (orders not found) enter other email address, as they don't have any order in the data .csv files will redirect to the error page.
+
