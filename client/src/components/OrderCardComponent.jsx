@@ -5,6 +5,7 @@ import styled from 'styled-components'
 const StyledAddress = styled.div`
     display: grid;
 `;
+StyledAddress.displayName = 'StyledAddress'
 
 export const OrderCardComponent = (props) => {
     const { order, orderIndex, history } = props

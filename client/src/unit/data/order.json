@@ -1,0 +1,28 @@
+{
+    "orderNo": "ORD-123-2018",
+    "tracking_number": "00340000161200000001",
+    "courier": "DHL",
+    "street": "Landwehrstr. 39",
+    "zip_code": "80336",
+    "city": "München",
+    "destination_country_iso3": "DEU",
+    "email": "julian@parcellab.com",
+    "article_list": [
+        {
+        "articleNo": "A-B2-U",
+        "product_name": "parcelLab Tote Bag",
+        "quantity": "1",
+        "articleImageUrl": "http://cdn.parcellab.com/img/sales-cannon/parcellab-bag.jpg"
+        }
+    ],
+    "order_details": [
+        {
+        "tracking_number": "00340000161200000001",
+        "location": "",
+        "timestamp": "2018-04-06T05:58:00.000Z",
+        "status": "Scheduled",
+        "status_text": "Delivery date set",
+        "status_details": "An appointment to make the delivery has been made. The goods will be delivered on Saturday, Apr 7th, 2018, between 9:30 am and 1:00 pm."
+        }
+    ]
+}
