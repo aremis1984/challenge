@@ -19,7 +19,7 @@ Inside the project there are the following folders:
   
   ## Before run the BE and FE servers
   1. Open two console terminals, in one of them, navigate to the server folder, in the oder to the client one.
-  2. In both run the command "npm install" to install the necessary dependencies required by the app (once they finish, a folder node_modules shoud appear in both)
+  2. In both folders, run the command "npm install" to install the dependencies required by the app (once they finish, a folder called node_modules will appear in both)
   3. Start the BE server by the command "node server.js"
   4. Start the FE server by "npm start"
   
@@ -30,8 +30,11 @@ Inside the project there are the following folders:
   ## Running tests
   # Integration tests
   The tests are done with Cypress.
-  In order to run the integration tests execute "npm test" a browser window will be openned.
+  In order to run the integration tests execute "npm test" in the console on the client folder, a browser window will be openned, the first time it'll take a while to start, be sure that the server is running.
   You will se a lists of tests, on the right side you will see "Run X integration specs", click here in order to run everything.
   Test can also be run individually by clicking on it inside the list 
+
   # Unit tests
-  In order to execute unit tests please use this command "npm run unit" insidde client folder
+  In order to execute unit tests please use this command "npm run unit" in the console, inside client folder.
+  If this message is displayed "No tests found related to files changed since last commit. Press `a` to run all tests, or run Jest with `--watchAll`.", please press "a" in oder to run all the unit test.
+

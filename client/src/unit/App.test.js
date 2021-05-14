@@ -2,10 +2,10 @@ import React from 'react';
 import sinon from 'sinon'
 import { shallow } from 'enzyme'
 import { Route } from 'react-router-dom'
-import apis from './api'
+import apis from '../api'
 
-import App from './App'
-import { MainPage, OrdersListPage, OrdersDetailsPage } from './pages'
+import App from '../App'
+import { MainPage, OrdersListPage, OrdersDetailsPage } from '../pages'
 
 const tracking = [
   {
