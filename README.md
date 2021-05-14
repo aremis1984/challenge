@@ -8,10 +8,16 @@ The FE is done in React, the styles are not imported css sheets, all are aplied 
 Inside the project there are the following folders:
 
 * Client: Front-end code
-  - Components: Reusable React components
-  - Styles: Common styles (styled componets)
-  - api: services to get the BE requests
-  - Pages: different main views
+
+  *Inside src folder:
+    - Components: Reusable React components
+    - Styles: Common styles (styled componets)
+    - api: services to get the BE requests
+    - Pages: different main views
+    - unit: unit tests
+    
+  *Cypress: integration tests
+
 * Server: BE code in node.js
   - controllers: Read CSV files and process data before send it to the FE
   - routers: configure requests paths
