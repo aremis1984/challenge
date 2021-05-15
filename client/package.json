@@ -23,6 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "unit": "npm test -- --watchAll=false",
     "test": "react-scripts test",
     "integration": "npx cypress open",
     "eject": "react-scripts eject"

@@ -4,9 +4,7 @@ const api = axios.create({
     baseURL: 'http://localhost:8080/api',
 })
 
-export const getTrackingsByEmail = async (email) => {
-    return await api.get(`/user-trackings/${email}`).then(response => response.data)
-}
+export const getTrackingsByEmail = payload => api.post(`/user-trackings`, payload).then(response => response.data)
 
 const apis = {
     getTrackingsByEmail

@@ -50,11 +50,12 @@ const removeDuplications = (arr) => {
 exports.getTrackingsByEmail = async (req, res) => {
     try {
         const data = csvToJson.getJsonFromCsv(__dirname + '/../data/trackings.csv')
-        const email = req.params.email
+        const email = req.body.email
 
         if (!email) {
             return res.status(400).json({
                 success: false,
+                email,
                 error: 'You must provide a valid email address.'
             })
         }
@@ -75,10 +76,10 @@ exports.getTrackingsByEmail = async (req, res) => {
           const results = merge_object_arrays (trackings, checkpoints)
 
           //return an object which includes trackings and asociated checkpoints
-          return res.status(200).send(results)
+          return res.status(200).json({email, results})
         }
 
-        return res.status(400).json({ not_found: true })
+        return res.status(200).json({ email, not_found: true })
 
     } catch (error) {
         console.log(error.message)

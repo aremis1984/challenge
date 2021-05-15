@@ -23,13 +23,14 @@ describe('OrdersListPage', () => {
   })
 
   it("shows error", (done) => {
-    fetch.returns(Promise.reject(new Error()))
+    const res = { email: 't@t.de', not_found: true }
+    fetch.returns(Promise.resolve(res))
     const wrapper = shallow(<OrdersListPage {...props} />)
 
     setTimeout(() => {
       wrapper.update()
-      expect(wrapper.state('hasError')).toEqual(true)
-      expect(wrapper.find('.text-info').text()).toEqual('t@t.de')
+      expect(wrapper.state('hasError')).toEqual(res.not_found)
+      expect(wrapper.find('.text-info').text()).toEqual(res.email)
       done()
     })
   })
@@ -39,6 +40,7 @@ describe('OrdersListPage', () => {
     const wrapper = shallow(<OrdersListPage {...props} />)
     setTimeout(() => {
       wrapper.update()
+      expect(wrapper.state('email')).toEqual(tracking.email)
       expect(wrapper.find('OrderCardComponent').length).toEqual(2)
       done()
     })

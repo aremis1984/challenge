@@ -11,7 +11,8 @@ export class OrdersListPage extends React.Component {
         super(props)
         this.state = {
           hasError: false,
-          trackings: []
+          trackings: [],
+          email: ''
         }
       }
     
@@ -21,18 +22,23 @@ export class OrdersListPage extends React.Component {
 
     getTracking () {
         const email = this.props.history.location.state && this.props.history.location.state.email
-        return apis.getTrackingsByEmail(email).then((trackings) => {
-            this.setState({ trackings })
+        return apis.getTrackingsByEmail({ email }).then((data) => {
+            if(data.not_found) {
+                NotificationManager.error('We could not get your orders, ' +
+                'if you think this is an error, please try again.', 'Email not found', 3000)
+                this.setState({email: data.email, hasError: data.not_found })
+            } else {
+                this.setState({email: data.email, trackings: data.results })
+            }
         }).catch ((err) => {
-            NotificationManager.error('We could not get your orders, please try again.', 'Error', 2000)
+            NotificationManager.error('We could not get your orders, please try again.', 'Error', 3000)
             this.setState({ hasError: true })
         })
     }
 
     render () {
         const { history } = this.props
-        const { trackings, hasError } = this.state
-        const { email } = history.location.state
+        const { trackings, hasError, email } = this.state
         return (
             <OrdersWrapper>
                 <h1>Your Orders</h1>
@@ -50,9 +56,9 @@ export class OrdersListPage extends React.Component {
                 {hasError &&
                     <React.Fragment>
                         <h4>No orders were found</h4>
-                        <span>There any order in the system associated to the email address: </span>
+                        <span>There is any order in the system associated to the introduced email address </span>
                         <span className = 'text-info'>{email}</span>
-                        <p>If you think this is an error, please go back and try again.</p>
+                        <p>Please be sure the email is correct, go back and try again.</p>
                     </React.Fragment>
                 }
                 <LinkComponent 

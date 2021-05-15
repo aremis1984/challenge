@@ -12,10 +12,10 @@ beforeEach(() => {
       .get('button').click()
     cy.intercept(
         {
-          method: 'GET', // Route all GET requests
-          url: '/user-trackings/*', // that have a URL that matches '/users/*'
+          method: 'POST', // Route all POST requests
+          url: '/user-trackings/*', // that have a URL that matches '/user-trackings/*'
         },
-        [] // and force the response to be: []
+        { email: 'test@test.de', hasError: true } // and force the response
       )
     cy.url().should('include', '/order-history')
       .get('h4').contains('No orders were found')
@@ -28,8 +28,8 @@ beforeEach(() => {
     cy.get('input[name=email]').should('be.visible')
       .get('input[name=email]').type('julian@parcellab.com')
       .get('button').click()
-
-    cy.intercept('GET', '/user-trackings/*', { fixture: 'response.json' })
+    cy.fixture('response.json').as('resData')
+    cy.intercept('POST', '/user-trackings/*', '@resData')
 
     cy.url().should('include', '/order-history')
       .get('h1').contains('Your Orders')
