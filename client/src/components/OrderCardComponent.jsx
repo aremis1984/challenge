@@ -8,9 +8,9 @@ const StyledAddress = styled.div`
 StyledAddress.displayName = 'StyledAddress'
 
 export const OrderCardComponent = (props) => {
-    const { order, orderIndex, history } = props
+    const { order, history } = props
     
-    const handleClick = (index) => {
+    const handleClick = () => {
        history.push({
            pathname: '/order-details',
            state: order
@@ -20,7 +20,7 @@ export const OrderCardComponent = (props) => {
     const { order_details } = order
 
     return (
-        <StyledCard className='order-card' onClick={() => handleClick(orderIndex)}>
+        <StyledCard className='order-card' onClick={() => handleClick()}>
             <div className='card-body row'>
                 <div className='col-md-6 col-xs-12'>
                     <span className='small fw-light'>Order Number</span>

@@ -31,7 +31,7 @@ beforeEach(() => {
     cy.get('p').contains('Please enter your email address to see your recent orders.')
       .get('Label').contains('Email')
       .get('input[name=email]').its('length').should('eq', 1)
-      .get('button').contains('send')
+      .get('button').contains('search')
   })
 
 })

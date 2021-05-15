@@ -26,6 +26,13 @@ const StyledCard = styled.div`
 `;
 StyledCard.displayName = 'StyledCard'
 
+const StyledButton = styled.button`
+    width: 100%;
+    text-transform: uppercase;
+    margin-top: 20px;
+`;
+StyledButton.displayName = 'StyledButton'
 
 
-export { StyledWrapper, OrdersWrapper, StyledCard }
+
+export { StyledWrapper, OrdersWrapper, StyledCard, StyledButton }

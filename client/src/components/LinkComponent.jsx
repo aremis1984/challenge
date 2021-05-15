@@ -1,13 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-
-const StyledButton = styled.button`
-    width: 100%;
-    text-transform: uppercase;
-    margin-top: 20px;
-`;
-StyledButton.displayName = 'StyledButton'
+import { StyledButton } from '../styles/StyledWrappers'
 
 export const LinkComponent = (props) => {
 
